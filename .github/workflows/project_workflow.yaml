@@ -4,7 +4,7 @@ on:
     branches:
       - main
       - dev
-  pull:
+  pull_request:
     branches:
       - main
       - release-*
@@ -20,13 +20,13 @@ jobs:
         with:
           node-version: '20'
       - name: install dependencies
-        run: npn-ci
+        run: npm-ci
       - name: run test
         run: npm test
 
   deploy:
     needs: test
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: get code
         uses: actions/checkout@v6
